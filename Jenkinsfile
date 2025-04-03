@@ -28,7 +28,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dckr_pat_nsnEw6ug2pe-npGUoBcUwMCx45w') {
+                    docker.withRegistry('https://registry.hub.docker.com', '5723c3db-a942-48e9-9264-5ef62be83cda') {
                         dockerImage.push()
                     }
                 }
