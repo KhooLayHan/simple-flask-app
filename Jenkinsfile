@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    pip3 install pytest
+                    pip3 install -r requirements.txt
                     python3 -m pytest tests/
                 '''
             }
