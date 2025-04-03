@@ -10,14 +10,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'python -m pytest tests/'
+                sh 'python3 -m pytest tests/'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("yourdockerhub/flask-app:${env.BUILD_ID}")
+                    dockerImage = docker.build("vincentkhoo01/simple-flask-app:${env.BUILD_ID}")
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                 sh """
                     docker stop flask-app || true
                     docker rm flask-app || true
-                    docker run -d -p 5000:5000 --name flask-app yourdockerhub/flask-app:${env.BUILD_ID}
+                    docker run -d -p 5000:5000 --name flask-app vincentkhoo01/simple-flask-app:${env.BUILD_ID}
                 """
             }
         }
